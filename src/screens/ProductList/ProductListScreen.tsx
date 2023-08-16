@@ -63,6 +63,8 @@ export const ProductListScreen = () => {
 
             <View style={styles.searchContent}>
               <TextInput
+                placeholder="search..."
+                placeholderTextColor={'#2C3E50'}
                 style={styles.search}
                 value={searchInput}
                 onChangeText={text => {
@@ -133,12 +135,15 @@ const styles = StyleSheet.create({
   },
   search: {
     width: '80%',
-    height: vs(20),
+    height: vs(40),
+    color: '#2C3E50',
+    fontSize: ms(14),
+    alignItems: 'center',
   },
   searchBtn: {
     backgroundColor: 'blue',
     paddingHorizontal: s(10),
-    paddingVertical: vs(5),
+    paddingVertical: vs(10),
     borderRadius: s(4),
   },
   titleContent: {
