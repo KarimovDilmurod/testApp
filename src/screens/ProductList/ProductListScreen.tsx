@@ -7,8 +7,6 @@ import {
   FlatList,
   RefreshControl,
   ActivityIndicator,
-  TextInput,
-  TouchableOpacity,
 } from 'react-native';
 import {useAppSelector} from 'hooks/redux';
 import {getProductListWithSearch} from 'state/productList/selectors';
@@ -19,7 +17,7 @@ import {
   getMoreProductListAction,
   getProductListAction,
 } from 'state/productList/actions';
-import R from 'res';
+import SearchComponent from 'components/SearchComponent';
 
 export const ProductListScreen = () => {
   const dispatch = useAppDispatch();
@@ -61,26 +59,17 @@ export const ProductListScreen = () => {
               <Text style={styles.title}>ProductList</Text>
             </View>
 
-            <View style={styles.searchContent}>
-              <TextInput
-                style={styles.search}
-                value={searchInput}
-                onChangeText={text => {
-                  if (!text) {
-                    setSearch('');
-                  }
+            <SearchComponent
+              onChangeText={text => {
+                if (!text) {
+                  setSearch('');
+                }
 
-                  setSearchInput(text);
-                }}
-              />
-
-              <TouchableOpacity
-                style={styles.searchBtn}
-                hitSlop={10}
-                onPress={addSearch}>
-                <R.icons.SearchIcon color={'white'} size={20} />
-              </TouchableOpacity>
-            </View>
+                setSearchInput(text);
+              }}
+              value={searchInput}
+              onPressBtnSearch={addSearch}
+            />
           </View>
         }
         onEndReached={onLoading}
@@ -120,26 +109,6 @@ const styles = StyleSheet.create({
   },
   loadingStyle: {
     marginVertical: vs(20),
-  },
-  searchContent: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingLeft: s(10),
-    paddingVertical: vs(2),
-    backgroundColor: '#CACFD2',
-    borderRadius: s(4),
-    alignItems: 'center',
-    marginVertical: vs(10),
-  },
-  search: {
-    width: '80%',
-    height: vs(20),
-  },
-  searchBtn: {
-    backgroundColor: 'blue',
-    paddingHorizontal: s(10),
-    paddingVertical: vs(5),
-    borderRadius: s(4),
   },
   titleContent: {
     alignItems: 'center',
