@@ -18,7 +18,7 @@ export const ProductDetailScreen = () => {
             <Text style={styles.subTitle}>{detailData?.body}</Text>
           </View>
         ) : (
-          <Text>Нет информации</Text>
+          <Text style={styles.infoText}>Нет информации</Text>
         )}
       </View>
     </SafeAreaView>
@@ -51,6 +51,11 @@ const styles = StyleSheet.create({
   subTitle: {
     color: 'red',
     fontSize: ms(16),
+    fontFamily: R.fonts.Poppins.thin,
+  },
+  infoText: {
+    fontSize: ms(18),
+    color: '#48C9B0',
     fontFamily: R.fonts.Poppins.thin,
   },
 });
