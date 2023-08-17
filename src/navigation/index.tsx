@@ -25,13 +25,9 @@ const Navigator = ({theme}: {theme: TTheme}) => {
       <RootStack.Navigator
         initialRouteName={R.routes.ROOT_MAIN}
         screenOptions={() => ({
-          headerShown: true,
+          headerShown: false,
         })}>
-        <RootStack.Screen
-          name={R.routes.ROOT_MAIN}
-          component={Tabs}
-          options={{headerShown: false}}
-        />
+        <RootStack.Screen name={R.routes.ROOT_MAIN} component={Tabs} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
